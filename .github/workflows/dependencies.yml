@@ -1,4 +1,4 @@
-name: Dependencies Example
+name: Build Example
 
 on:
   push:
@@ -15,7 +15,9 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "15.x" # or any version you choose
+          node-version: "15.x"   # or another version you prefer
 
-      - name: Verification
-        run: ls -alhR
+      - name: Build the code
+        run: |
+          npm install
+          npm run build
