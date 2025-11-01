@@ -1,4 +1,4 @@
-name: Docker Example
+name: Node.js User Management API Docker Build
 
 on:
   push:
@@ -44,13 +44,13 @@ jobs:
           echo "COPY . ." >> Dockerfile
           echo "RUN npm run build" >> Dockerfile
           echo "EXPOSE 5000" >> Dockerfile
-          echo "ENV NODE_ENV=development" >> Dockerfile
+          echo "ENV NODE_ENV=production" >> Dockerfile
           echo "CMD [\"node\", \"dist/index.js\"]" >> Dockerfile
 
       - name: Build and Push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .            # Path context includes all files
-          file: ./Dockerfile    # Use the dynamically created Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: lucadanijspxl/nodejs-demo-app:latest
