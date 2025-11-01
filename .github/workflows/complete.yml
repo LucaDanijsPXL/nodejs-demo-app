@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "15.x"  # or the version your project needs
+          node-version: "15.x"
 
       - name: Build the code
         run: |
@@ -24,4 +24,11 @@ jobs:
 
       - name: Test the code
         run: |
-          npm test --if-present -- --watch=false || true
+          npm test -- --coverage
+
+      - name: Code Coverage Report
+        uses: mridang/action-test-reporter@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: ./coverage/clover.xml
+          working-directory: ./
