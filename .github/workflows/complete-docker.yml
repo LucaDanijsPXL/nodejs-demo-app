@@ -38,7 +38,7 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./Dockerfile
+          context: .               # Path context includes the built files
+          file: ./Dockerfile        # Make sure Dockerfile exists in repo root
           push: true
           tags: lucadanijspxl/nodejs-demo-app:latest
