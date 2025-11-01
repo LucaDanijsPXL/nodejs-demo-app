@@ -17,11 +17,8 @@ jobs:
         with:
           node-version: "18.x"
 
-      - name: Install dependencies
+      - name: Install dependencies for testing
         run: npm install
-
-      - name: Build the code
-        run: npm run build
 
       - name: Test the code
         run: npm test -- --coverage
@@ -53,7 +50,7 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .            # Path context includes built files
+          context: .            # Path context includes all files
           file: ./Dockerfile    # Use the dynamically created Dockerfile
           push: true
           tags: lucadanijspxl/nodejs-demo-app:latest
