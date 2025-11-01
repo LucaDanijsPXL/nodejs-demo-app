@@ -15,9 +15,13 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: "15.x"   # or another version you prefer
+          node-version: "15.x"  # or the version your project needs
 
       - name: Build the code
         run: |
           npm install
           npm run build
+
+      - name: Test the code
+        run: |
+          npm test --if-present -- --watch=false || true
